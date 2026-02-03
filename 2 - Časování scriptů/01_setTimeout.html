@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01 - setTimeout()</title>
+  </head>
+  <body>
+    <h1>Metoda setTimeout()</h1>
+    <button id="btn">Click me</button>
+
+    <script>
+      const btn = document.getElementById("btn");
+
+      btn.addEventListener("click", () => {
+        // Metoda se zavolá za 3sec a pak už nikdy.
+        setTimeout(() => {
+          alert("Hello");
+        }, 3000);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02 - setInterval</title>
+  </head>
+  <body>
+    <h1>Metoda setInterval()</h1>
+    <button id="btn">Click me</button>
+
+    <script>
+      const btn = document.getElementById("btn");
+      let interval;
+
+      btn.addEventListener("click", () => {
+        // Je nutné si uvědomit, že každý interval musí být uložen do proměnné, aby bylo možné ho zastavit.
+        // Dále pamatujte, že při zavlání setInterval() se první spuštění se stane až po uběhnutí intervalu, ne ihned na začátku.
+
+        if (interval) {
+          console.log("Interval zastaven");
+
+          clearInterval(interval);
+          interval = null;
+        } else {
+          console.log("Interval spusten");
+
+          interval = setInterval(() => {
+            console.log("Hello");
+          }, 1000);
+        }
+      });
+    </script>
+  </body>
+</html>
