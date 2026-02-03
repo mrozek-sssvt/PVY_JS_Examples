@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>00 Základní vytváření elementů v DOM</title>
+  </head>
+  <body>
+    <h1>00 Základní vytváření elementů v DOM</h1>
+    <button id="btn">Vytvoř položku</button>
+
+    <ul id="list"></ul>
+
+    <script>
+      const list = document.getElementById("list");
+      const btn = document.getElementById("btn");
+
+      // TIP: Podívejte se do DevTools, jak tento el. vypadá.
+      const textNode = document.createTextNode(
+        "Toto je pouze text, bez elementu",
+      );
+
+      btn.addEventListener("click", () => {
+        const newItem = document.createElement("li");
+        newItem.textContent = "Nová položka";
+        list.appendChild(newItem);
+
+        // Přidání textového uzlu
+        document.body.appendChild(textNode);
+
+        // Simulace kliku na element bez pridani do DOM - v nekterych prohlizecich zakaznano!
+          const link = document.createElement("a");
+          link.href = "https://www.sssvt.cz/img/aktuality/informace/maturitni-ples/2026pozvanka.jpg";
+          link.download = "obrazek.jpg";
+          link.click();
+      });
+    </script>
+  </body>
+</html>

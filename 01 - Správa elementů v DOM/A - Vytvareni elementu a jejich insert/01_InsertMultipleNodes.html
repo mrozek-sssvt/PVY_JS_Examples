@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01 Přidání více elementů najednou</title>
+  </head>
+  <body>
+    <button id="btn">Vytvoř položky</button>
+
+    <ul id="list1"></ul>
+    <ul id="list2"></ul>
+    <ul id="list3"></ul>
+
+    <script>
+      const btn = document.getElementById("btn");
+
+      btn.addEventListener("click", () => {
+        // Možnost 1: Přes tzv. "fragment", který se pak v DOMu objeví najednou.
+        // Tato možnost je lepší z hlediska výkonu.
+        const list1 = document.getElementById("list1");
+        const fragment = document.createDocumentFragment();
+
+        for (let i = 1; i <= 5; i++) {
+          const newItem = document.createElement("li");
+          newItem.textContent = `Položka ${i}`;
+          fragment.appendChild(newItem);
+        }
+
+        list1.appendChild(fragment);
+
+        // Možnost 2: Přes insert v cyklu (pomalejší a horší z hlediska výkonu)
+        const list2 = document.getElementById("list2");
+        for (let i = 1; i <= 5; i++) {
+          const newItem = document.createElement("li");
+          newItem.textContent = `Položka ${i}`;
+          list2.appendChild(newItem);
+        }
+
+        // Možnost 3: Přes operátor ... (spread). Je to v podstatě to samé jako Možnost 2.
+        const list3 = document.getElementById("list3");
+        const elements = [];
+        for (let i = 1; i <= 5; i++) {
+          const newItem = document.createElement("li");
+          newItem.textContent = `Položka ${i}`;
+          elements.push(newItem);
+        }
+
+        list3.append(...elements);
+      });
+    </script>
+  </body>
+</html>

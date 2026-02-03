@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02 Before a After</title>
+  </head>
+  <body>
+    <button id="btn">Vytvoř položky</button>
+
+    <ul id="list">
+      <li id="listItem">Kontrolní položka</li>
+    </ul>
+
+    <script>
+      const listItem = document.getElementById("listItem");
+      const btn = document.getElementById("btn");
+
+      btn.addEventListener("click", () => {
+        // Metody Before & After vkládají elementy vedle sebe, nikoliv do sebe.
+        // Je to v podstatě to samé jako appendChild, ale s tím rozdílem, že
+        // appendChild vkládá element do sebe, zatímco before a after vkládají
+        // element vedle sebe.
+
+        // Přidá element před položku
+        const newItem = document.createElement("li");
+        newItem.textContent = "Nová položka - před";
+        listItem.before(newItem);
+
+        // Přidá element za položku
+        const newItem2 = document.createElement("li");
+        newItem2.textContent = "Nová položka - za";
+        listItem.after(newItem2);
+      });
+    </script>
+  </body>
+</html>

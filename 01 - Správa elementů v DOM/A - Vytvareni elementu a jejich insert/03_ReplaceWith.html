@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03 ReplaceWith</title>
+  </head>
+  <body>
+    <button id="btn">Vytvoř položky</button>
+
+    <ul id="list">
+      <li id="listItem">Kontrolní položka</li>
+    </ul>
+
+    <script>
+      const listItem = document.getElementById("listItem");
+      const btn = document.getElementById("btn");
+
+      btn.addEventListener("click", () => {
+        // Metoda replaceWith nahradí element elementem.
+        // Je to v podstatě to samé jako appendChild, ale s tím rozdílem, že
+        // appendChild vkládá element do sebe, zatímco replaceWith nahrazuje element.
+
+        // Nahradí položku
+        const newItem = document.createElement("li");
+        newItem.textContent = "Nová položka, která je přepsána";
+        listItem.replaceWith(newItem);
+      });
+    </script>
+  </body>
+</html>

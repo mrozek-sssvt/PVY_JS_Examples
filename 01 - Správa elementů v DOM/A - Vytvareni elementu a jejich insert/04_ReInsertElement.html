@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04 Přesun položky v rámci DOM</title>
+  </head>
+  <body>
+    <button id="btn">Přesun položky</button>
+
+    <div>
+      <h1>Seznam 1</h1>
+      <ul id="list">
+        <li id="listItem">Kontrolní položka</li>
+      </ul>
+    </div>
+    <div>
+      <h1>Seznam 2</h1>
+      <ul id="list2"></ul>
+    </div>
+
+    <script>
+      const listItem = document.getElementById("listItem");
+      const btn = document.getElementById("btn");
+      let list = document.getElementById("list2");
+      let isList2 = true;
+
+      listItem.addEventListener("click", () => {
+        console.log("Click");
+      });
+
+      btn.addEventListener("click", () => {
+        // Na kusu kódu níže je demonstrováno, že opětovný appendChild() na stejném elementu
+        // způsobí, že se element přesune (nevytvoří se nový element). Event Click je zachován
+        // i po přesunu elementu. Tato mechanika funguje i u ostatních metod (append, prepend, insertBefore, apod.)
+
+        if (isList2) {
+          list.appendChild(listItem);
+          list = document.getElementById("list");
+          isList2 = false;
+        } else {
+          list.appendChild(listItem);
+          list = document.getElementById("list2");
+          isList2 = true;
+        }
+      });
+    </script>
+  </body>
+</html>

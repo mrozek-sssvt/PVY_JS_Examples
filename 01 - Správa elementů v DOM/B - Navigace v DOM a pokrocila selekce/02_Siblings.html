@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02 Siblings</title>
+  </head>
+  <body>
+    <button id="btn">Vypiš sourozence</button>
+
+    <ul id="list">
+      <li>Položka 1</li>
+      <li id="listItem">Kontrolní položka</li>
+      <li>Položka 3</li>
+    </ul>
+
+    <script>
+      const listItem = document.getElementById("listItem");
+      const btn = document.getElementById("btn");
+
+      btn.addEventListener("click", () => {
+        // Metoda siblings vrací sourozence elementu.
+        // Je to v podstatě to samé jako parentElement, ale s tím rozdílem, že
+        // parentElement vrací nejbližšího předka elementu, zatímco siblings vrací
+        // sourozence elementu.
+
+        // Vypíše sourozence elementu
+        console.log(listItem.siblings);
+
+        // Next & Previous sourozenci
+        console.log(listItem.nextElementSibling);
+        console.log(listItem.previousElementSibling);
+      });
+    </script>
+  </body>
+</html>

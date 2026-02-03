@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01 Closest</title>
+  </head>
+  <body>
+    <button id="btn">Vytvoř položky</button>
+
+    <ul id="list">
+      <li id="listItem">Kontrolní položka</li>
+    </ul>
+
+    <script>
+      const listItem = document.getElementById("listItem");
+      const btn = document.getElementById("btn");
+
+      btn.addEventListener("click", () => {
+        // Metoda closest vrací nejbližšího předka elementu, který odpovídá danému selektoru.
+        // Je to v podstatě to samé jako parentElement, ale s tím rozdílem, že
+        // parentElement vrací nejbližšího předka elementu, zatímco closest vrací
+        // nejbližšího předka elementu, který odpovídá danému selektoru.
+
+        // Vypíše nejbližšího předka elementu, který odpovídá danému selektoru
+        console.log(listItem.closest("ul"));
+      });
+    </script>
+  </body>
+</html>
