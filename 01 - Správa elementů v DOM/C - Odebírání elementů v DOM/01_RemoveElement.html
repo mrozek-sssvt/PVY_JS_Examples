@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01 Remove Element</title>
+  </head>
+  <body>
+    <button id="btn">Remove Element</button>
+
+    <ul id="list">
+      <li id="listItem">Kontrolní položka</li>
+    </ul>
+
+    <script>
+      const listItem = document.getElementById("listItem");
+      const btn = document.getElementById("btn");
+
+      btn.addEventListener("click", () => {
+        // Metoda remove() odebere element z DOMu - volá se na elementu, který chceme odebrat.
+        listItem.remove();
+      });
+    </script>
+  </body>
+</html>
