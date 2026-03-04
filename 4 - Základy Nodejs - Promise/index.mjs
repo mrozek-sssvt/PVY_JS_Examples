@@ -35,15 +35,15 @@ addAsync(1, 2).then((result) => {
     console.log(result);
 });
 
-// Tento kus kódu nám vyhodí Nodejs chybu UnhandledPromiseRejectionError, protože jsme neudělali 
-// nic s chybou, která vznikla v Promise. Znaky "a" a "b" nejsou čísla, takže se operace 
+// Tento kus kódu nám vyhodí Nodejs chybu UnhandledPromiseRejectionError v případě, že nebudeme mít catch. Znaky "a" a "b" nejsou čísla, takže se operace 
 // neprovede úspěšně a zavolá se reject.
-// Musíme proto přidat metodu .catch(), která nám umožní pracovat s chybou (viz zakomentovaný kód).
+// Musíme proto přidat metodu .catch(), která nám umožní pracovat s chybou.
+// Zkuste schválně zakomentovat .catch() a uvidíte, co se stane.
 addAsync("a", "b").then((result) => {
     console.log(result);
-})/*.catch((error) => {
+}).catch((error) => {
     console.log(error);
-});*/
+});
 
 
 // Promise.all() je metoda, která nám umožní pracovat s více Promise najednou.
@@ -52,4 +52,34 @@ Promise.all([addAsync(1, 2), addAsync(3, 4)]).then((result) => {
     console.log(result);
 }).catch((error) => {
     console.log(error);
+});
+
+// Metoda then() nemusí být ale pouze na objektu Promise. Můžeme si jí nadefinovat i samostatně.
+// Mimochodem, tento kód je příkladem tzv. "builder patternu"
+class SqlQueryBuilder {
+    tableName;
+    columns;
+
+    from(tableName) {
+        this.tableName = tableName;
+        return this;
+    }
+
+    select(columns) {
+        this.columns = columns;
+        return this;
+    }
+
+    /**
+     * Naše metoda then() funguje na stejném principu jako Promise.then()
+     * V tomto případě nám vrací SQL dotaz.
+     */
+    then(resolve) {
+        resolve(`SELECT ${this.columns} FROM ${this.tableName}`);
+    }
+}
+
+const query = new SqlQueryBuilder().from("users").select(["name", "email"]);
+query.then((result) => {
+    console.log(result);
 });
