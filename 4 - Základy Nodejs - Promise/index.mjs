@@ -41,9 +41,9 @@ addAsync(1, 2).then((result) => {
 // Musíme proto přidat metodu .catch(), která nám umožní pracovat s chybou (viz zakomentovaný kód).
 addAsync("a", "b").then((result) => {
     console.log(result);
-}).catch((error) => {
+})/*.catch((error) => {
     console.log(error);
-});
+});*/
 
 
 // Promise.all() je metoda, která nám umožní pracovat s více Promise najednou.
