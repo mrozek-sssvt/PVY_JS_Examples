@@ -1,0 +1,23 @@
+--- TEST 1: Blocking sleep ---
+./test-api-call.sh                       
+Sending 2 concurrent requests to http://localhost:3000...
+
+Request 1 finished in 5027ms
+Request 2 finished in 10029ms
+
+Total wall-clock time: 10031ms
+
+--- TEST 2: Non-blocking sleep ---
+./test-api-call.sh
+Sending 2 concurrent requests to http://localhost:3000...
+
+Request 2 finished in 5027ms
+Request 1 finished in 5027ms
+
+Total wall-clock time: 5030ms
+
+
+--- RESULTS ---
+Jak je vidět z výsledků, tak v případě blokujícího volání (blockingSleep) se druhý požadavek musel počkat na dokončení prvního,
+proto celkový čas byl součtem obou. V případě neblokujícího volání (nonBlockingSleep) 
+se oba požadavky zpracovávaly souběžně, proto celkový čas byl roven delšímu z obou.
