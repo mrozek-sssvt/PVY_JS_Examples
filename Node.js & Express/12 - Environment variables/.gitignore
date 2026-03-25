@@ -1,0 +1,10 @@
+node_modules/
+
+# ENV soubory s tajnymi hodnotami nepatri do gitu
+.env
+.env.development
+.env.production
+.env.local
+
+# Sablona .env.example je vyjimka - tu commitujeme
+!.env.example
